@@ -1,0 +1,27 @@
+node_modules/
+.env
+.env.local
+npm-debug.log*
+.DS_Store
+.vscode/
+build/
+dist/
+coverage/
+.idea/
+# lock files
+package-lock.json
+yarn.lock
+# logs
+logs/
+*.log
+
+# os files
+Thumbs.db
+
+# optionally ignore runtime files
+pids/
+*.pid
+*.seed
+
+# macOS
+.DS_Store

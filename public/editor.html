@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Editor | ICD Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="brand">ICD Portal</a>
+        <div class="links" id="navLinks">
+            <a href="index.html">Search</a>
+            <a href="editor.html" class="active">Editor</a>
+            <a href="logs.html">Activity Log</a>
+            <a href="#" id="logoutBtn">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container" style="max-width: 1200px;">
+        <div class="hero">
+            <h1>Database Management</h1>
+            <p>Authorized personnel only. All changes are logged.</p>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-bottom: 2rem; justify-content: center;">
+            <button class="btn-search" onclick="toggleBox('addFieldBox')">+ Add New Field</button>
+            <button class="btn-search" onclick="toggleBox('addRowBox')" style="background: var(--success);">+ Add New
+                Record</button>
+        </div>
+
+        <div id="addFieldBox" class="card"
+            style="display: none; margin-bottom: 2rem; animation: slideDown 0.3s ease-out;">
+            <h3>Add New Field</h3>
+            <div style="display: flex; gap: 1rem; align-items: flex-end;">
+                <div class="form-group" style="flex: 2; margin-bottom: 0;">
+                    <label>Field Name (e.g. description_updated)</label>
+                    <input type="text" id="newColName">
+                </div>
+                <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                    <label>Data Type</label>
+                    <input type="text" id="newColType" placeholder="TEXT">
+                </div>
+                <button class="btn-search" onclick="addColumn()" style="height: 50px;">Add Field</button>
+                <button class="btn-search" onclick="toggleBox('addFieldBox')"
+                    style="height: 50px; background: var(--error);">Cancel</button>
+            </div>
+        </div>
+
+        <div id="addRowBox" class="card"
+            style="display: none; margin-bottom: 2rem; animation: slideDown 0.3s ease-out;">
+            <h3>Add New Record</h3>
+            <div id="newRowForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div id="dynamicInputs"
+                    style="grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-height: 300px; overflow-y: auto; padding-right: 10px;">
+                    <!-- dynamic inputs will be injected here -->
+                </div>
+                <button class="btn-search" onclick="addRow()">Add Record</button>
+                <button class="btn-search" onclick="toggleBox('addRowBox')"
+                    style="background: var(--error);">Cancel</button>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 2rem;">
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <h3 style="margin: 0; white-space: nowrap;">Find Record:</h3>
+                <div class="search-wrapper" style="margin-bottom: 0; flex: 1; max-width: none;">
+                    <input type="text" id="editorSearchInput"
+                        placeholder="Search by ICD Code or Condition Name only...">
+                    <button class="btn-search" onclick="searchEditor()">Find</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="editorTable">
+                <thead>
+                    <tr id="tableHead">
+                        <!-- Headers will be injected here -->
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Data will be injected here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
+            <button class="btn-search" id="prevPage">Previous</button>
+            <span id="pageInfo">Page 1</span>
+            <button class="btn-search" id="nextPage">Next</button>
+        </div>
+    </div>
+
+    <div id="notification"></div>
+
+    <script src="editor.js"></script>
+</body>
+
+</html>

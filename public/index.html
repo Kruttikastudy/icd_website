@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ICD Code Search</title>
+  <title>ICD Portal | Modern Medical Search</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>ICD Code Search</header>
+  <nav>
+    <a href="index.html" class="brand">ICD Portal</a>
+    <div class="links" id="navLinks">
+      <a href="index.html" class="active">Search</a>
+      <a href="editor.html">Editor</a>
+      <a href="logs.html">Activity Log</a>
+      <a href="signin.html" id="authLink">Sign In</a>
+    </div>
+  </nav>
 
   <div class="container">
-    <input type="text" id="searchInput" placeholder="Enter ICD code (e.g., A00)">
-    <button id="searchBtn">Search</button>
-    <div id="results" class="results"></div>
+    <div class="hero">
+      <h1>Intelligent ICD Lookup</h1>
+      <p>Search for ICD-10 codes and conditions with ease.</p>
+    </div>
+
+    <div class="search-wrapper">
+      <input type="text" id="searchInput" placeholder="Search by ICD Code or Condition Name only...">
+      <button class="btn-search" id="searchBtn">Search</button>
+    </div>
+
+    <div id="results" class="results">
+      <!-- Results will appear here -->
+    </div>
   </div>
+
+  <div id="notification"></div>
 
   <script src="script.js"></script>
 </body>
+
 </html>

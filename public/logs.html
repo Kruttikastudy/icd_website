@@ -11,6 +11,11 @@
 <body>
     <nav>
         <a href="index.html" class="brand">ICD Portal</a>
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="links" id="navLinks">
             <a href="index.html">Search</a>
             <a href="editor.html">Editor</a>
@@ -125,6 +130,22 @@
             e.preventDefault();
             await fetch('/api/logout', { method: 'POST' });
             window.location.href = 'signin.html';
+        });
+
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('active');
+            document.getElementById('menuToggle').classList.toggle('open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('navLinks');
+            const toggle = document.getElementById('menuToggle');
+            if (menu.classList.contains('active') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+                menu.classList.remove('active');
+                toggle.classList.remove('open');
+            }
         });
     </script>
 </body>

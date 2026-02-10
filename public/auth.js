@@ -64,3 +64,19 @@ document.getElementById('registerForm')?.addEventListener('submit', async (e) =>
         showNotification('Network error', 'error');
     }
 });
+
+// Mobile Menu Toggle
+document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('active');
+    document.getElementById('menuToggle').classList.toggle('open');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    const menu = document.getElementById('navLinks');
+    const toggle = document.getElementById('menuToggle');
+    if (menu.classList.contains('active') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove('active');
+        toggle.classList.remove('open');
+    }
+});

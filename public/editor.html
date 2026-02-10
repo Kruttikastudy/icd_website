@@ -11,6 +11,11 @@
 <body>
     <nav>
         <a href="index.html" class="brand">ICD Portal</a>
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="links" id="navLinks">
             <a href="index.html">Search</a>
             <a href="editor.html" class="active">Editor</a>
@@ -25,7 +30,7 @@
             <p>Authorized personnel only. All changes are logged.</p>
         </div>
 
-        <div style="display: flex; gap: 1rem; margin-bottom: 2rem; justify-content: center;">
+        <div class="flex-row justify-center" style="margin-bottom: 2rem;">
             <button class="btn-search" onclick="toggleBox('addFieldBox')">+ Add New Field</button>
             <button class="btn-search" onclick="toggleBox('addRowBox')" style="background: var(--success);">+ Add New
                 Record</button>
@@ -34,7 +39,7 @@
         <div id="addFieldBox" class="card"
             style="display: none; margin-bottom: 2rem; animation: slideDown 0.3s ease-out;">
             <h3>Add New Field</h3>
-            <div style="display: flex; gap: 1rem; align-items: flex-end;">
+            <div class="flex-row" style="align-items: flex-end;">
                 <div class="form-group" style="flex: 2; margin-bottom: 0;">
                     <label>Field Name (e.g. description_updated)</label>
                     <input type="text" id="newColName">
@@ -52,19 +57,21 @@
         <div id="addRowBox" class="card"
             style="display: none; margin-bottom: 2rem; animation: slideDown 0.3s ease-out;">
             <h3>Add New Record</h3>
-            <div id="newRowForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                <div id="dynamicInputs"
-                    style="grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-height: 300px; overflow-y: auto; padding-right: 10px;">
+            <div id="newRowForm" class="grid-2">
+                <div id="dynamicInputs" class="dynamic-grid"
+                    style="grid-column: span 1; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-height: 300px; overflow-y: auto; padding-right: 10px;">
                     <!-- dynamic inputs will be injected here -->
                 </div>
-                <button class="btn-search" onclick="addRow()">Add Record</button>
-                <button class="btn-search" onclick="toggleBox('addRowBox')"
-                    style="background: var(--error);">Cancel</button>
+                <div class="flex-row">
+                    <button class="btn-search" onclick="addRow()" style="flex: 1;">Add Record</button>
+                    <button class="btn-search" onclick="toggleBox('addRowBox')"
+                        style="background: var(--error); flex: 1;">Cancel</button>
+                </div>
             </div>
         </div>
 
         <div class="card" style="margin-bottom: 2rem;">
-            <div style="display: flex; gap: 1rem; align-items: center;">
+            <div class="flex-row">
                 <h3 style="margin: 0; white-space: nowrap;">Find Record:</h3>
                 <div class="search-wrapper" style="margin-bottom: 0; flex: 1; max-width: none;">
                     <input type="text" id="editorSearchInput"

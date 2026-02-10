@@ -73,7 +73,7 @@ async function searchICD() {
     const conditionBox = document.createElement("div");
     conditionBox.className = "card";
     conditionBox.innerHTML = `
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+      <div class="result-header">
         <div style="flex: 1;">
           <span class="tag">${row.icd_10_code}</span>
           <h2 style="margin: 0.5rem 0; font-size: 1.8rem;">${row.original_condition}</h2>
@@ -135,5 +135,21 @@ async function searchICD() {
     console.error(error);
   }
 }
+
+// Mobile Menu Toggle
+document.getElementById('menuToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('active');
+  document.getElementById('menuToggle').classList.toggle('open');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  const menu = document.getElementById('navLinks');
+  const toggle = document.getElementById('menuToggle');
+  if (menu.classList.contains('active') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+    menu.classList.remove('active');
+    toggle.classList.remove('open');
+  }
+});
 
 checkStatus();
